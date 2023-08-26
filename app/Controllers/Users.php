@@ -17,6 +17,10 @@ class Users extends BaseController
 
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Listando os usuários do sistema'
+        ];
+
+        return view('Users/index', $data);
     }
 }
