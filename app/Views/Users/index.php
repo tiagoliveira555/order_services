@@ -31,4 +31,15 @@
 
 <?php echo $this->section('scripts'); ?>
 <script src="<?php echo site_url('assets/'); ?>DataTables/datatables.min.js"></script>
+<script>
+new DataTable('#ajaxTable', {
+  ajax: 'users/getusers',
+  columns: [
+      { data: 'image' },
+      { data: 'name' },
+      { data: 'email' },
+      { data: 'active' }
+  ]
+});
+</script>
 <?php echo $this->endSection(); ?>
