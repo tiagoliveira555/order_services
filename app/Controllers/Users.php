@@ -25,14 +25,22 @@ class Users extends BaseController
     }
 
     public function getUsers() {
-        // if(!$this->request->isAJAX()) {
-        //     return redirect()->back();
-        // }
+        if(!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
 
         $users = $this->userModel->select(['id', 'name', 'email', 'active', 'image'])->findAll();
         
-        echo '<pre>';
-        print_r($users);
-        exit;
+        $data = [];
+        foreach ($users as $user) {
+            $data[] = [
+                'image' => $user->image,
+                'name' => esc($user->name),
+                'email' => esc($user->email),
+                'active' => $user->active === 't' ? 'Ativo' : '<span class="text-warning">Inativo</span>'
+            ];
+        }
+
+        return $this->response->setJSON(['data' => $data]);
     }
 }
