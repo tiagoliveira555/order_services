@@ -24,13 +24,14 @@ class Users extends BaseController
         return view('Users/index', $data);
     }
 
-    public function getUsers() {
-        if(!$this->request->isAJAX()) {
+    public function getUsers()
+    {
+        if (!$this->request->isAJAX()) {
             return redirect()->back();
         }
 
         $users = $this->userModel->select(['id', 'name', 'email', 'active', 'image'])->findAll();
-        
+
         $data = [];
         foreach ($users as $user) {
             $data[] = [
