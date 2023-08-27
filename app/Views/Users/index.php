@@ -9,6 +9,8 @@
 <?php echo $this->endSection(); ?>
 
 <?php echo $this->section('content'); ?>
+<i class="fa fa-unlock text-success"></i>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="block">

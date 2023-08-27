@@ -38,7 +38,7 @@ class Users extends BaseController
                 'image' => $user->image,
                 'name' => esc($user->name),
                 'email' => esc($user->email),
-                'active' => $user->active === 't' ? 'Ativo' : '<span class="text-warning">Inativo</span>'
+                'active' => $user->active === 't' ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo' : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo'
             ];
         }
 
