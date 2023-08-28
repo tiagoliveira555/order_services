@@ -22,6 +22,21 @@
         <a href="<?php echo site_url("users/imageedit/$user->id") ?>" class="btn btn-outline-primary btn-sm mt-3">Alterar imagem</a>
       </div>
       <hr class="border-secondary">
+      <h5 class="card-title mt-2"><?php echo esc($user->name); ?></h5>
+      <p class="card-text"><?php echo esc($user->email); ?></p>
+      <p class="card-text">Criado <?php echo esc($user->created_at); ?></p>
+      <p class="card-text">Atualizado <?php echo esc($user->updated_at); ?></p>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ações
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="<?php echo site_url("users/edit/$user->id") ?>">Editar usuário</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+      <a href="<?php echo site_url("users") ?>" class="btn btn-secondary ml-2">Voltar</a>
     </div>
   </div>
 </div>
