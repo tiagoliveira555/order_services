@@ -9,7 +9,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Protection Method
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Protection Method for Cross Site Request Forgery protection.
      *
@@ -20,7 +20,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Token Randomization
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Randomize the CSRF Token for added security.
      */
@@ -29,16 +29,16 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Token Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Token name for Cross Site Request Forgery protection.
      */
-    public string $tokenName = 'csrf_test_name';
+    public string $tokenName = 'csrf_order_services';
 
     /**
      * --------------------------------------------------------------------------
      * CSRF Header Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Header name for Cross Site Request Forgery protection.
      */
@@ -47,7 +47,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Cookie Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Cookie name for Cross Site Request Forgery protection.
      */
@@ -56,7 +56,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Expires
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Expiration time for Cross Site Request Forgery protection cookie.
      *
@@ -67,7 +67,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Regenerate
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Regenerate CSRF Token on every submission.
      */
@@ -76,7 +76,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Redirect
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Redirect to previous page with error on failure.
      */
@@ -85,7 +85,7 @@ class Security extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF SameSite
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Setting for CSRF SameSite cookie token.
      *
@@ -94,8 +94,7 @@ class Security extends BaseConfig
      * Defaults to `Lax` as recommended in this link:
      *
      * @see https://portswigger.net/web-security/csrf/samesite-cookies
-     *
-     * @deprecated `Config\Cookie` $samesite property is used.
+     * @deprecated `Config\Cookie` $samesite property is used
      */
     public string $samesite = 'Lax';
 }

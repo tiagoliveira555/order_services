@@ -16,9 +16,11 @@
 
         <?php echo form_open('/', ['id' => 'form'], ['id' => "$user->id"]); ?>
 
+        <?php echo $this->include('Users/_form'); ?>
+
         <div class="form-group mt-5 mb-2">
           <input class="btn btn-danger mr-2" type="submit" id="btn-salvar" value="Salvar">
-          <a href="<?php echo site_url("users/show/$user->id") ?>" class="btn btn-secondary ml-2">Voltar</a>
+          <a href="<?php echo site_url("users/show/$user->id"); ?>" class="btn btn-secondary ml-2">Voltar</a>
         </div>
 
         <?php echo form_close(); ?>
