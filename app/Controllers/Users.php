@@ -68,6 +68,18 @@ class Users extends BaseController
         return view('Users/edit', $data);
     }
 
+    public function update()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+        $post = $this->request->getPost();
+
+        echo '<pre>';
+        print_r($post);
+        exit;
+    }
+
     private function getUserOr404(int $id = null)
     {
         if (!$id || !$user = $this->userModel->withDeleted(true)->find($id)) {

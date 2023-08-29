@@ -11,7 +11,7 @@
   <input type="password" name="password" placeholder="Senha de acesso" class="form-control">
 </div>
 <div class="form-group">
-  <label class="form-control-label">Confirmação de senha</label>
+  <label class="form-control-label">Confirmação da senha</label>
   <input type="password" name="password_confirmation" placeholder="Confirme a senha de acesso" class="form-control">
 </div>
 <div class="custom-control custom-checkbox">
