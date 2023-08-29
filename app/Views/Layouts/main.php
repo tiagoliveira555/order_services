@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>vendor/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>css/font.css">
   <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>https://fonts.googleapis.com/css?family=Muli:300,400,700">
-  <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>css/style.sea.css" id="theme-stylesheet">
+  <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>css/style.default.css" id="theme-stylesheet">
   <link rel="stylesheet" href="<?php echo site_url('assets/'); ?>css/custom.css">
   <link rel="shortcut icon" href="<?php echo site_url('assets/'); ?>img/favicon.ico">
 
