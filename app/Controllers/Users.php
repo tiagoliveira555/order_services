@@ -49,6 +49,8 @@ class Users extends BaseController
     public function show(int $id = null)
     {
         $user = $this->getUserOr404($id);
+
+        dd($user);
         
         $data = [
             'title' => 'Detalhando o usuário ' . esc($user->name),
