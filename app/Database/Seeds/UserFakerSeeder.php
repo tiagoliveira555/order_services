@@ -11,17 +11,17 @@ class UserFakerSeeder extends Seeder
     public function run()
     {
         $userModel = new UserModel();
-        $faker = Factory::create();
+        $faker = Factory::create('pt-BR');
 
         $quantityUserCreate = 5000;
         $usersPush = [];
 
-        for ($i = 0; $i < $quantityUserCreate; $i++) {
+        for ($i = 0; $i < $quantityUserCreate; ++$i) {
             array_push($usersPush, [
                 'name' => $faker->unique()->name,
                 'email' => $faker->unique()->email,
                 'password_hash' => password_hash('123456', PASSWORD_BCRYPT),
-                'active' => $faker->boolean()
+                'active' => $faker->boolean(),
             ]);
         }
 

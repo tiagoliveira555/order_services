@@ -56,7 +56,7 @@
             $('#btn-save').val('Salvar').removeAttr('disabled');
             $('[name=csrf_order_services]').val(response.token);
 
-            if(!response.erro) {
+            if(!response.error) {
 
               if(response.info) {
                 $('#response').html(`<div class="alert alert-info">${response.info}</div>`);
@@ -66,11 +66,11 @@
               };
             };
 
-            if(response.erro) {
-              $('#response').html(`<div class="alert alert-danger">${response.erro}</div>`);
+            if(response.error) {
+              $('#response').html(`<div class="alert alert-danger">${response.error}</div>`);
 
-              if(response.errors_model) {
-                $.each(response.errors_model, function(key, value) {
+              if(response.errors) {
+                $.each(response.errors, function(key, value) {
                   $('#response').append(`
                     <ul class="list-unstyled">
                       <li class="text-danger">
@@ -82,6 +82,7 @@
               }
             }; 
           },
+          
           error: function() {
             alert('Não foi possível processar a solicitação. Por favor entre em contato com o suporte técnico.');
             $('#btn-save').val('Salvar').removeAttr('disabled');

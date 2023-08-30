@@ -22,6 +22,7 @@
       <hr class="border-secondary">
       <h5 class="card-title mt-2"><?php echo esc($user->name); ?></h5>
       <p class="card-text"><?php echo esc($user->email); ?></p>
+      <p class="card-text"><?php echo $user->active == 't' ? 'Usuário ativo' : 'Usuário inativo'; ?></p>
       <p class="card-text">Criado <?php echo esc($user->created_at->humanize()); ?></p>
       <p class="card-text">Atualizado <?php echo esc($user->updated_at->humanize()); ?></p>
       <div class="btn-group">

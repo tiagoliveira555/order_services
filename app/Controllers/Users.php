@@ -75,19 +75,27 @@ class Users extends BaseController
         }
 
         $responseData['token'] = csrf_hash();
-        $responseData['erro'] = 'Essa é uma mensagem de validação';
-        $responseData['errors_model'] = [
-            'name' => 'O nome é obrigatório',
-            'email' => 'E-mail inválido',
-            'password' => 'A senha é muito curta',
-        ];
-
-        return $this->response->setJSON($responseData);
 
         $post = $this->request->getPost();
-        echo '<pre>';
-        print_r($post);
-        exit;
+        unset($post['password']);
+        unset($post['password_confirmation']);
+
+        $user = $this->getUserOr404($post['id']);
+        $user->fill($post);
+
+        if ($user->hasChanged() == false) {
+            $responseData['info'] = 'Não há dados para serem atualizados.';
+
+            return $this->response->setJSON($responseData);
+        }
+        if ($this->userModel->protect(false)->save($user)) {
+            return $this->response->setJSON($responseData);
+        }
+
+        $responseData['error'] = 'Por favor verifique os campos abaixo e tente novamente.';
+        $responseData['errors'] = $this->userModel->errors();
+
+        return $this->response->setJSON($responseData);
     }
 
     private function getUserOr404(int $id = null)
