@@ -37,6 +37,7 @@
     $(document).ready(function(){
       $('#form').on('submit', function(e){
         e.preventDefault();
+
         $.ajax({
           type: 'POST',
           url: '<?php echo site_url('users/update'); ?>',
@@ -45,14 +46,51 @@
           contentType: false,
           cache: false,
           processData: false,
+
           beforeSend: function(){
             $('#response').html('');
             $('#btn-save').val('Por favor aguarde...');
           },
+
           success: function(response) {
+            $('#btn-save').val('Salvar').removeAttr('disabled');
+            $('[name=csrf_order_services]').val(response.token);
+
+            if(!response.erro) {
+
+              if(response.info) {
+                $('#response').html(`<div class="alert alert-info">${response.info}</div>`);
+
+              } else {
+                window.location.href = '<?php echo site_url("/users/show/$user->id"); ?>';
+              };
+            };
+
+            if(response.erro) {
+              $('#response').html(`<div class="alert alert-danger">${response.erro}</div>`);
+
+              if(response.errors_model) {
+                $.each(response.errors_model, function(key, value) {
+                  $('#response').append(`
+                    <ul class="list-unstyled">
+                      <li class="text-danger">
+                        ${value}
+                      </li>
+                    </ul>
+                  `);
+                });
+              }
+            }; 
+          },
+          error: function() {
+            alert('Não foi possível processar a solicitação. Por favor entre em contato com o suporte técnico.');
             $('#btn-save').val('Salvar').removeAttr('disabled');
           }
         });
+      });
+
+      $('#form').submit(function() {
+        $(this).find(':submit').attr('disabled', 'disabled');
       });
     });
   </script>

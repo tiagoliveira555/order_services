@@ -73,8 +73,18 @@ class Users extends BaseController
         if (!$this->request->isAJAX()) {
             return redirect()->back();
         }
-        $post = $this->request->getPost();
 
+        $responseData['token'] = csrf_hash();
+        $responseData['erro'] = 'Essa é uma mensagem de validação';
+        $responseData['errors_model'] = [
+            'name' => 'O nome é obrigatório',
+            'email' => 'E-mail inválido',
+            'password' => 'A senha é muito curta',
+        ];
+
+        return $this->response->setJSON($responseData);
+
+        $post = $this->request->getPost();
         echo '<pre>';
         print_r($post);
         exit;

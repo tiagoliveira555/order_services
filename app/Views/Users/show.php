@@ -11,13 +11,13 @@
     <div class="block">
       <div class="text-center">
 
-        <?php if ($user->image == null) : ?>
-          <img class="card-img-top" src="<?php echo site_url('assets/img/user-image-default.png') ?>" alt="User Image Dafault" style="width: 90%;">
-        <?php else : ?>
-          <img class="card-img-top" src="<?php echo site_url("users/image/$user->image") ?>" alt="<?php echo esc($user->name); ?>" style="width: 90%;">
-        <?php endif; ?>
+        <?php if ($user->image == null) { ?>
+          <img class="card-img-top" src="<?php echo site_url('assets/img/user-image-default.png'); ?>" alt="User Image Dafault" style="width: 90%;">
+        <?php } else { ?>
+          <img class="card-img-top" src="<?php echo site_url("users/image/$user->image"); ?>" alt="<?php echo esc($user->name); ?>" style="width: 90%;">
+        <?php } ?>
         
-        <a href="<?php echo site_url("users/imageedit/$user->id") ?>" class="btn btn-outline-primary btn-sm mt-3">Alterar imagem</a>
+        <a href="<?php echo site_url("users/imageedit/$user->id"); ?>" class="btn btn-outline-primary btn-sm mt-3">Alterar imagem</a>
       </div>
       <hr class="border-secondary">
       <h5 class="card-title mt-2"><?php echo esc($user->name); ?></h5>
@@ -29,12 +29,12 @@
           Ações
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="<?php echo site_url("users/edit/$user->id") ?>">Editar usuário</a>
+          <a class="dropdown-item" href="<?php echo site_url("users/edit/$user->id"); ?>">Editar usuário</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
         </div>
       </div>
-      <a href="<?php echo site_url("users") ?>" class="btn btn-secondary ml-2">Voltar</a>
+      <a href="<?php echo site_url('users'); ?>" class="btn btn-secondary ml-2">Voltar</a>
     </div>
   </div>
 </div>
