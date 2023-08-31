@@ -78,20 +78,23 @@ class Users extends BaseController
 
         $post = $this->request->getPost();
 
+        $user = $this->getUserOr404($post['id']);
+
         if (empty($post['password'])) {
             unset($post['password']);
             unset($post['password_confirmation']);
         }
 
-        $user = $this->getUserOr404($post['id']);
         $user->fill($post);
 
-        if ($user->hasChanged() == false) {
+        if ($user->hasChanged() === false) {
             $responseData['info'] = 'Não há dados para serem atualizados.';
 
             return $this->response->setJSON($responseData);
         }
         if ($this->userModel->protect(false)->save($user)) {
+            session()->setFlashdata('success', 'Dados salvos com sucesso!');
+
             return $this->response->setJSON($responseData);
         }
 
