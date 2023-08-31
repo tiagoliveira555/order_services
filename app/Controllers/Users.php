@@ -77,8 +77,11 @@ class Users extends BaseController
         $responseData['token'] = csrf_hash();
 
         $post = $this->request->getPost();
-        unset($post['password']);
-        unset($post['password_confirmation']);
+
+        if (empty($post['password'])) {
+            unset($post['password']);
+            unset($post['password_confirmation']);
+        }
 
         $user = $this->getUserOr404($post['id']);
         $user->fill($post);
