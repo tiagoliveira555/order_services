@@ -37,7 +37,7 @@ class Users extends BaseController
                 'image' => $user->image,
                 'name' => anchor("/users/show/{$user->id}", esc($user->name), 'title: "exibir usuário '.esc($user->name).'"'),
                 'email' => esc($user->email),
-                'active' => $user->active === 't' ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo' : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo',
+                'active' => $user->active ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo' : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo',
             ];
         }
 

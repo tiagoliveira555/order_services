@@ -20,7 +20,7 @@ class UserFakerSeeder extends Seeder
             array_push($usersPush, [
                 'name' => $faker->unique()->name,
                 'email' => $faker->unique()->email,
-                'password_hash' => password_hash('123456', PASSWORD_BCRYPT),
+                'password_hash' => password_hash('123456', PASSWORD_DEFAULT),
                 'active' => $faker->boolean(),
             ]);
         }

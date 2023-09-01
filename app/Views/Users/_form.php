@@ -15,7 +15,7 @@
   <input type="password" name="password_confirmation" placeholder="Confirme a senha de acesso" class="form-control">
 </div>
 <div class="custom-control custom-checkbox">
-  <input type="hidden" name="active" value="f">
-  <input type="checkbox" name="active" value="t" class="custom-control-input" id="active" <?php if ($user->active === 't') { ?>checked<?php } ?> >
+  <input type="hidden" name="active" value="0">
+  <input type="checkbox" name="active" value="1" class="custom-control-input" id="active" <?php if ($user->active) { ?>checked<?php } ?> >
   <label class="custom-control-label" for="active">Usuário ativo</label>
 </div>
