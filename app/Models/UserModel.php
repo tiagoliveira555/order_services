@@ -25,8 +25,32 @@ class UserModel extends Model
     protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules = [];
-    protected $validationMessages = [];
+    protected $validationRules = [
+        'id' => 'permit_empty|is_natural_no_zero',
+        'name' => 'required|min_length[3]|max_length[125]',
+        'email' => 'required|max_length[250]|valid_email|is_unique[users.email,id,{id}]',
+        'password' => 'required|min_length[6]',
+        'password_confirmation' => 'required_with[password]|matches[password]',
+    ];
+    protected $validationMessages = [
+        'name' => [
+            'required' => 'O campo Nome completo é obrigatório.',
+            'min_length' => 'O campo Nome completo precisa ter pelo menos 3 carecteres.',
+            'max_length' => 'O campo Nome completo não pode ser maior que 125 caracteres.',
+        ],
+        'email' => [
+            'required' => 'O campo E-mail é obrigatório.',
+            'is_unique' => 'Esse e-mail já foi escolhido. Por favor informe outro.',
+            'max_length' => 'O campo E-mail não pode ser maior que 230 caracteres.',
+        ],
+        'password' => [
+            'min_length' => 'A Senha precisa ter pelo menos 6 carecteres.',
+        ],
+        'password_confirmation' => [
+            'required_with' => 'Por favor confirme sua senha.',
+            'matches' => 'As senhas precisam ser iguais.',
+        ],
+    ];
 
     // Callbacks
     protected $allowCallbacks = true;
