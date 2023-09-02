@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Entities\User;
 use App\Models\UserModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -54,6 +55,18 @@ class Users extends BaseController
         ];
 
         return view('Users/show', $data);
+    }
+
+    public function create()
+    {
+        $user = new User();
+
+        $data = [
+            'title' => 'Criando novo usuário',
+            'user' => $user,
+        ];
+
+        return view('Users/create', $data);
     }
 
     public function edit(int $id = null)
