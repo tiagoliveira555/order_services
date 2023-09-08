@@ -41,7 +41,7 @@
 
         $.ajax({
           type: 'POST',
-          url: '<?php echo site_url('users/update'); ?>',
+          url: '<?php echo site_url('users/store'); ?>',
           data: new FormData(this),
           dataType: 'json',
           contentType: false,
@@ -63,7 +63,7 @@
                 $('#response').html(`<div class="alert alert-info">${response.info}</div>`);
 
               } else {
-                window.location.href = '<?php echo site_url("/users/show/$user->id"); ?>';
+                window.location.href = `<?php echo site_url('/users/show/'); ?>${response.id}`;
               };
             };
 

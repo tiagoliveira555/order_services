@@ -9,9 +9,6 @@
 <div class="row">
   <div class="col-lg-4">
     <div class="block">
-
-    <?php echo session('success'); ?>
-
       <div class="text-center">
 
         <?php if ($user->image == null) { ?>

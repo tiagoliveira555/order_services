@@ -30,7 +30,10 @@ class Users extends BaseController
             return redirect()->back();
         }
 
-        $users = $this->userModel->select(['id', 'name', 'email', 'active', 'image'])->findAll();
+        $users = $this->userModel
+                            ->select(['id', 'name', 'email', 'active', 'image'])
+                            ->orderBy('id', 'DESC')
+                            ->findAll();
 
         $data = [];
         foreach ($users as $user) {
@@ -67,6 +70,33 @@ class Users extends BaseController
         ];
 
         return view('Users/create', $data);
+    }
+
+    public function store()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        $responseData['token'] = csrf_hash();
+
+        $post = $this->request->getPost();
+
+        $user = new User($post);
+
+        if ($this->userModel->save($user)) {
+            $btnCreate = anchor('users/create', 'Cadastrar novo usuário', ['class' => 'btn btn-danger mt-2']);
+
+            session()->setFlashdata('success', "Dados salvos com sucesso!<br> $btnCreate");
+            $responseData['id'] = $this->userModel->getInsertID();
+
+            return $this->response->setJSON($responseData);
+        }
+
+        $responseData['error'] = 'Por favor verifique os campos abaixo e tente novamente.';
+        $responseData['errors'] = $this->userModel->errors();
+
+        return $this->response->setJSON($responseData);
     }
 
     public function edit(int $id = null)
